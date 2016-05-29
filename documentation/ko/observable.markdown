@@ -6,7 +6,7 @@ id: observable
 
 <h1>Observable</h1>
 <p>
- ReactiveX에서는 <dfn>옵저버</dfn>가 <dfn>Observable</dfn>을 <dfn>구독한다</dfn>. 그 후 Obseravable이 <dfn>내보내는</dfn> 항목 혹은 연속된 항목에 따라 옵저버가 반응한다. 
+ ReactiveX에서는 <dfn>옵저버</dfn>가 <dfn>Observable</dfn>을 <dfn>구독한다</dfn>. 그 후 Obseravable이 <dfn>발행하는</dfn> 항목 혹은 연속된 항목에 따라 옵저버는 반응한다. 
  이 패턴은 동시성 연산을 가능하게 하는데, 그 이유는 옵저버는 더 이상 Observable이 객체를 내보낼 때까지 기다리지 않고 대신 어떤 객체가 배출되는 시점을 감시하는 관찰자를 옵저버 안에 만들어 놓고 관찰자를 통해 알림을 받기 때문이다.
 </p>
 <p>
