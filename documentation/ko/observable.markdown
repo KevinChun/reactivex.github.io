@@ -118,42 +118,31 @@ myObservable.subscribe(myOnNext, myError, myComplete);
 </ul>
 <h2>구독 해지하기</h2>
 <p>
- In some ReactiveX implementations, there is a specialized observer interface, <code>Subscriber</code>, that
- implements an <code>unsubscribe</code> method. You can call this method to indicate that the Subscriber is no
- longer interested in any of the Observables it is currently subscribed to. Those Observables can then (if they
- have no other interested observers) choose to stop generating new items to emit.
-</p><p>
- The results of this unsubscription will cascade back through the chain of operators that applies to the
- Observable that the observer subscribed to, and this will cause each link in the chain to stop emitting items.
- This is not guaranteed to happen immediately, however, and it is possible for an Observable to generate and
- attempt to emit items for a while even after no observers remain to observe these emissions.
+ ReactiveX 구현체 중에는 특정 옵저버 인터페이스를 구현하는 <code>Subscriber</code>라는 클래스가 있는데 이 클래스는 <code>unsubscribe</code>라는 메서드를 제공한다.
+ 현재 구독하고 있는 Observable 중 구독자가 더 이상 구독을 원치 않을 경우에는 이 메서드를 호출하면 된다. (만약 더 이상 관심있는 다른 옵저버가 없다면) Observable들은 새로운 항목들을 배출하지 않는다.
 </p>
-<h2>Some Notes on Naming Conventions</h2>
 <p>
- Each language-specific implementation of ReactiveX has its own naming quirks. There is no canonical naming
- standard, though there are many commonalities between implementations.
-</p><p>
- Furthermore, some of these names have different implications in other contexts, or seem awkward in the idiom of
- a particular implementing language.
-</p><p>
- For example there is the <code>on<i>Event</i></code> naming pattern (e.g. <code>onNext</code>,
- <code>onCompleted</code>, <code>onError</code>). In some contexts such names would indicate methods by means of
- which event handlers are <em>registered</em>. In ReactiveX, however, they name the event handlers themselves.
+ unsubscribe를 통한 구독 해지는 연산자 체인을 통해 옵저버가 구독하고 있었던 Observable들이 더 이상 항목들을 배출하지 못하도록 체인 안에 연결된 링크들을 끊어 버린다.
 </p>
-<h1>&ldquo;Hot&rdquo; and &ldquo;Cold&rdquo; Observables</h1>
+<h2>명명 규칙에 관한 참고내용</h2>
 <p>
- When does an Observable begin emitting its sequence of items? It depends on the Observable. A &ldquo;hot&rdquo;
- Observable may begin emitting items as soon as it is created, and so any observer who later subscribes to that
- Observable may start observing the sequence somewhere in the middle. A &ldquo;cold&rdquo; Observable, on the
- other hand, waits until an observer subscribes to it before it begins to emit items, and so such an observer is
- guaranteed to see the whole sequence from the beginning.
-</p><p>
- In some implementations of ReactiveX, there is also something called a &ldquo;Connectable&rdquo; Observable.
- Such an Observable does not begin emitting items until its
- <a href="operators/connect.html"><span class="operator">Connect</span></a> method is called, whether or not any
- observers have subscribed to it.
+ ReactiveX를 구현하는 언어들은 자신 만의 독특한 특징을 갖고있다. 그렇다고 반드시 지켜야할 규칙들이 존재하는 것은 아니지만, 언어별 구현체 간에 공통적으로 유지해야 할 많은 명명 규칙들이 존재한다.
 </p>
-<h1>Composition via Observable Operators</h1>
+<p>
+ 뿐만 아니라, 이들 규칙 간에는 각기 다른 문맥에서 서로 다른 함축적 의미를 가지고 있기도 하고 특정 언어의 관용구에서는 상당히 어색한 의미로 해석되기도 한다.
+</p>
+<p>
+ 예를 들면, (<code>onNext</code>, <code>onCompleted</code>, <code>onError</code>)같은 <code>on<i>Event</i></code> 이벤트에 관한 명명 패턴이 존재한다.
+ 어떤 문맥에서는 이 같은 이름들이, 어떤 핸들러가 등록 되었는지를 가리키는 메서드의 용도로 사용되기도 한다. 하지만, ReactiveX에서 이 이름들은 이벤트 핸들러 자체를 의미한다.
+</p>
+<h1>&ldquo;뜨거운&rdquo; 그리고 &ldquo;차가운&rdquo; Observables</h1>
+<p>
+ Observable은 언제 연속된 항목들을 배출하기 시작하는가? 이 질문에 대한 대답은, "Observable에 따라 다르다"이다. &ldquo;뜨거운&rdquo; Observable은 생성되지 마자 항목들을 배출할 수도 있어서 나중에 이 Observable을 구독하는 옵저버들은 항목들이 배출되는 중간부터 
+ 구독을 시작할 수도 있다. 반대로, &ldquo;차가운&rdquo; Observable은 옵저버가 구독을 시작할때 까지 항목들의 배출을 지연시키기 때문에 이 옵저버들은 Observable이 배출하는 항목들 전체를 구독하는 것을 보장한다.
+</p><p>
+ ReactiveX의 구현 코드 중에는 &ldquo;연결 가능한&rdquo; Observable이라고 불리는 Observable 객체가 존재하는데, 이 Observable은 어떤 옵저버에 의한 구독 여부와는 상관 없이 자신의 <a href="operators/connect.html"><span class="operator">Connect</span></a> 메서드가 호출되기 전까지 항목들을 배출하지 않는다.
+</p>
+<h1>Observable 연산자를 통한 구성</h1>
 <p>
  Observables and observers are only the start of ReactiveX. By themselves they’d be nothing more than a slight
  extension of the standard observer pattern, better suited to handling a sequence of events rather than a single
