@@ -11,7 +11,7 @@ id: observable
 </p>
 <p>
  이 문서에서는 리액티브 패턴이 무엇이고 Observable과 옵저버가 무엇인지(그리고 어떻게 옵저버가 observable을 구독하는지)를 설명한다.
- 그 다음에는 <a href="operators.html">다양한 Observable의 연산자들</a>을 어떻게 Obseravable에 연결 시키는지 또, 어떻게 Observable의 행동을 변경 시킬 수 있는지 설명한다.
+ 그 다음에는 <a href="../operators.html">다양한 Observable의 연산자들</a>을 어떻게 Obseravable에 연결 시키는지 또, 어떻게 Observable의 행동을 변경 시킬 수 있는지 설명한다.
 </p>
 <figure>
  <figcaption>
@@ -32,101 +32,91 @@ id: observable
 </ul>
 <h1>배경</h1>
 <p>
- 많은 코드를 통해 알 수 있는 것이, 대부분의 개발자들은 자신이 작성한 코드가 점진적으로, 한번에 하나씩, 작성된 순서에 따라 실행되고 완료 되기를 기대한다는 점이다.
- 하지만, ReactiveX에서 대부분의 코드들은 "옵저버"에 의해 임의의 순서에 따라 병렬로 실행되고 결과는 나중에 연산된다. 즉, 메서드를 <em>호출한다기 보단</em>, "observable" 안에서 데이터를 조회하고 변환하는 메커니즘을 정의한 후에 
- Observable이 이벤트를 발생시키면 옵저버의 관찰자가 그 순간을 감지하고 준비된 연산을 처리한 다음 결과를 리턴하도록 observable을 구독한다고 표현하는 것이 올바르다.
+ 많은 코드들을 살펴보면, 대부분의 개발자들은 자신이 작성한 코드가 점진적으로, 한번에 하나씩, 작성된 순서에 따라 실행되고 완료 되기를 기대한다는 사실을 알 수 있다.
+ 하지만, ReactiveX에의 코드 실행은 "옵저버"에 의해 임의의 순서에 대로, 병렬로 실행되며 결과는 나중에 연산된다. 즉, 메서드를 <em>호출한다기 보단</em>, "observable" 안에서 데이터를 조회하고 변환하는 메커니즘을 정의한 다음 
+ Observable이 이벤트를 발생시키면 옵저버의 관찰자가 그 순간을 탐지하고 준비된 연산을 실행한 후 결과를 리턴하도록, observable을 구독한다고 표현하는 것이 올바르다.
 </p>
 <p>
- 이런 접근 방법을 통해, 서로 의존적이지 않은 많은 코드들을 실행할 때 하나의 코드 블럭이 실행을 마치고 결과를 리턴할 때까지 기다릴 필요 없이 다음 코드 블럭을 실행할 수 있기 때문에 많은 코드들을 한번에 실행 실행 시킬 수 있기 때문 &mdash;
- 결과적으로 전체 실행 시간은 여러 코드 블럭 중 가장 실행 시간이 킨 시간 만큼 밖에 걸리지 않는다.
+ 이 접근 방법을 통해, 서로 의존하지 않은 많은 코드들을 실행할 경우, 하나의 코드 블럭이 실행 결과를 리턴할 때까지 기다릴 필요 없이 연이어 다음 코드를 실행할 수 있기 때문에 여러 코드를 한번에 실행 시킬 수 있어 &mdash;
+ 결과적으로 코드 전체의 실행 시간은 그 중 실행 시간이 긴 시간 만큼 밖에 걸리지 않는다.
 </p>
 <p>
- 비동기 프로그래밍과 설계 모델을 설명하기 위해 많은 용어들이 사용되고 있지만, 이 문서에서는 다음의 용어들을 사용할 것이다: <dfn>옵저버</dfn>는 <dfn>Observable</dfn>을 <dfn>구독한다</dfn>.
- Observable은 <dfn>항목들</dfn>을 <dfn>내보내거나</dfn> observable의 메서드 호출을 통해 옵저버에게 <dfn>알림</dfn>을 보낸다.
+ 비동기 프로그래밍과 설계 모델을 이야기하기 위해서 많은 용어들이 사용되고 있지만, 이 문서에서는 다음의 용어들을 사용한다: <dfn>옵저버</dfn>는 <dfn>Observable</dfn>을 <dfn>구독한다</dfn>.
+ Observable은 <dfn>항목들</dfn>을 <dfn>배출</dfn>하거나 observable의 메서드 호출을 통해 옵저버에게 <dfn>알림</dfn>을 보낸다.
 </p>
 <p>
- 많은 문서나 다른 문맥에서 우리가 "옵저버"라고 말하는 것이 "구독자", "관찰자" 또는 "리액터"라고 불려지기도 하는데, 통상적으로 이 모델은 <a href="http://en.wikipedia.org/wiki/Reactor_pattern">리액터 패턴</a>을 말한다.
+ 다양한 문서 또는 문맥에서 우리가 "옵저버"라고 말하는 것이 "구독자", "관찰자" 또는 "리액터"라고 불려지기도 하는데, 통상적으로 이 모델은 <a href="http://en.wikipedia.org/wiki/Reactor_pattern">리액터 패턴</a>을 말한다.
 </p>
 <h1>옵저버 생성</h1>
 <p>
- 이 페이지에서는 예제 코드로 Groovy 스타일의 의사코드(pseudocode)를 사용하지만, ReactiveX는 다양한 언어에서 사용되고 있다. 
+ 이 페이지에서는 예제 코드로 Groovy 스타일의 의사코드(pseudocode)를 사용하지만, 다양한 언어가 ReactiveX를 지원한다. 
 </p>
 <p>
- In an ordinary method call — that is, <em>not</em> the sort of asynchronous, parallel calls typical in
- ReactiveX — the flow is something like this:
+ ReactiveX에서는 기본적으로 비동기, 병렬로 메소드 호출이 처리되지만, 그 외의 일반적인 메서드 호출은 보통 아래와 같은 흐름으로 진행된다: 
 </p><ol>
- <li>Call a method.</li>
- <li>Store the return value from that method in a variable.</li>
- <li>Use that variable and its new value to do something useful.</li>
+ <li>메서드를 호출한다.</li>
+ <li>메서드가 리턴한 값을 변수에 저장한다.</li>
+ <li>결과 값을 가진 변수를 통해 필요한 연산을 처리한다.</li>
 </ol>
 <p>
- Or, something like this:
+ 혹은, 이렇게 표현하기도 한다:
 </p>
 <div class="code groovy"><pre>
-// make the call, assign its return value to `returnVal`
+// 메서드를 호출하고, 리턴 값을 `returnVal`에 할당한다
 returnVal = someMethod(itsParameters);
-// do something useful with returnVal</pre></div>
+// returnVal을 통해 필요한 작업을 진행한다</pre></div>
 <p>
- In the asynchronous model the flow goes more like this:
+ 하지만, 비동기 모델에서는 아래와 같이 코드가 실행된다.
 </p><ol>
- <li>Define a method that does something useful with the return value from the asynchronous call; this method is
-     part of the <i>observer</i>.</li>
- <li>Define the asynchronous call itself as an <i>Observable</i>.</li>
- <li>Attach the observer to that Observable by <i>subscribing</i> it (this also initiates the actions of the
-     Observable).</li>
- <li>Go on with your business; whenever the call returns, the observer’s method will begin to operate on its
-     return value or values — the <i>items</i> emitted by the Observable.</li>
+ <li>비동기 메소드 호출로 결과를 리턴받고 필요한 동작을 처리하는 메서드를 정의한다: 이 메서드는 <i>옵저버</i>의 일부가 된다.</li>
+ <li><i>Observable</i>로 비동기 호출을 정의한다.</li>
+ <li><i>구독</i>을 통해 옵저버를 Observable 객체에 연결 시킨다(또한, 동시에 Observable의 동작을 초기화 한다).</li>
+ <li>필요한 코드를 계속 구현한다; 메서드 호출로 결과가 리턴될 때마다, 옵저버의 메서드는 리턴 값 또는 (Observable이 배출하는)<i>항목들</i>을 활용해 연산을 시작한다.</li>
 </ol>
 <p>
- Which looks something like this:
+ 이를 코드로 구현하면 아래와 같다:
 </p>
 <div class="code groovy"><pre>
-// defines, but does not invoke, the Subscriber's onNext handler
-// (in this example, the observer is very simple and has only an onNext handler)
-def myOnNext = { it -> do something useful with it };
-// defines, but does not invoke, the Observable
+// 구독자의 onNext 핸들러를 정의한다, 하지만 실행하지는 않는다
+// (이 예제에서, 옵저버는 단순히 onNext 핸들러만 구현한다)
+def myOnNext = { it -> /* 필요한 연산을 처리한다 */ };
+// Observable을 정의하지만, 역시 실행하지는 않는다
 def myObservable = someObservable(itsParameters);
-// subscribes the Subscriber to the Observable, and invokes the Observable
+// Observable의 구독자를 구독한다. 그리고 Observable을 실행한다
 myObservable.subscribe(myOnNext);
-// go on about my business</pre></div>
-<h2>onNext, onCompleted, and onError</h2>
+// 필요한 코드를 구현한다</pre></div>
+<h2>onNext, onCompleted, 그리고 onError</h2>
 <p>
- <a href="operators/subscribe.html">The <code>Subscribe</code> method</a> is how you connect an observer to an
- Observable. Your observer implements some subset of the following methods:
+ <a href="operators/subscribe.html"><code>Subscribe</code> 메서드</a>를 통해 옵저버와 Observable을 연결한다. 여러분의 옵저버는 아래의 메서드를 구현하게 될 것이다:
 </p>
 <dl>
  <dt><code>onNext</code></dt>
-  <dd>An Observable calls this method whenever the Observable emits an item. This method takes as a parameter
-      the item emitted by the Observable.</dd>
+  <dd>Observable은 새로운 항목들을  배출할 때마다 이 메서드를 호출한다. 이 메서드는 Observable이 배출하는 항목을 자신의 파라미터로 전달 받는다.</dd>
  <dt><code>onError</code></dt>
-  <dd>An Observable calls this method to indicate that it has failed to generate the expected data or has
-      encountered some other error. It will not make further calls to <code>onNext</code> or <code>onCompleted</code>.
-      The <code>onError</code> method takes as its parameter an indication of what caused the error.</dd>
+  <dd>Observable은 기대하는 데이터가 생성되지 않았거나 다른 이유로 오류가 발생했을 때 이를 알리기 위해 이 메서드를 호출한다. 이 메서드가 호출되면 <code>onNext</code>나 <code>onCompleted</code>는 더 이상 호출되지 않는다.
+      이 <code>onError</code> 메서드는 어떤 오류가 발생했는지에 대한 정보를 담고 있는 객체를 파라미터로 전달 받는다.</dd>
  <dt><code>onCompleted</code></dt>
-  <dd>An Observable calls this method after it has called <code>onNext</code> for the final time, if it has not
-      encountered any errors.</dd>
+  <dd>오류가 발생하지 않았다면 Observable은 마지막 <code>onNext</code>를 호출한 후에 이 메서드를 호출한다.</dd>
 </dl>
 <p>
- By the terms of <a href="contract.html">the Observable contract</a>, it may call <code>onNext</code> zero or
- more times, and then may follow those calls with a call to either <code>onCompleted</code> or
- <code>onError</code> but not both, which will be its last call. By convention, in this document, calls to
- <code>onNext</code> are usually called &ldquo;emissions&rdquo; of items, whereas calls to
- <code>onCompleted</code> or <code>onError</code> are called &ldquo;notifications.&rdquo;
+ <a href="contract.html">the Observable contract</a>에 명시된 조건에 따라, <code>onNext</code>는 0번 이상 호출 될 수 있으며 그 후에는 <code>onCompleted</code> 또는
+ <code>onError</code> 둘 중 하나를 마지막으로 호출한다. 단, 둘 다 호출하지는 않는다. 이 문서에서는 관례에 따라, <code>onNext</code> 호출을 항목의 &ldquo;배출&rdquo;로 부르며, 반대로 
+ <code>onCompleted</code> 혹은 <code>onError</code> 호출을 &ldquo;알림&rdquo;으로 부를 것이다.
 </p><p>
- A more complete <code>subscribe</code> call example looks like this:
+ 이해를 돕기 위해서 <code>subscribe</code> 호출 예제를 조금 더 작성해 보았다:
 </p>
 <div class="code groovy"><pre>
-def myOnNext     = { item -> /* do something useful with item */ };
-def myError      = { throwable -> /* react sensibly to a failed call */ };
-def myComplete   = { /* clean up after the final response */ };
+def myOnNext     = { item -> /* 필요한 연산을 처리한다 */ };
+def myError      = { throwable -> /* 실패한 호출에 대응한다 */ };
+def myComplete   = { /* 최종 응답 후 정리 작업을 한다 */ };
 def myObservable = someMethod(itsParameters);
 myObservable.subscribe(myOnNext, myError, myComplete);
-// go on about my business</pre></div>
-<h4>See Also</h4>
+// 필요한 코드를 계속 구현한다</pre></div>
+<h4>참고</h4>
 <ul>
  <li><a href="http://www.introtorx.com/Content/v1.0.10621.0/02_KeyTypes.html#IObserver"><cite>Introduction to Rx</cite>: IObserver</a></li>
 </ul>
-<h2>Unsubscribing</h2>
+<h2>구독 해지하기</h2>
 <p>
  In some ReactiveX implementations, there is a specialized observer interface, <code>Subscriber</code>, that
  implements an <code>unsubscribe</code> method. You can call this method to indicate that the Subscriber is no
