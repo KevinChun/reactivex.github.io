@@ -22,14 +22,14 @@ id: subject
 </ul>
 <h2>주제의 종류</h2>
 <p>
- 모두 4 종류의 <code>주제</code>가 존재하며, 각각의 주제는 특정 상황에 맞게 설계되었다. 그렇기 때문에 모든 상황에서 아무 주제나 임의대로 사용할 수 없으며 일부 구현체는 주제를 다른 이름을 부르기도 한다(예를 들어, RxScala는 "주제(subject)"를 "발행주제(PublishSubject)"로 부른다).
+ 모두 4 종류의 <code>Subject</code>가 존재하며, 각각의 Subject는 특정 상황에 맞게 설계되었다. 그렇기 때문에 모든 상황에서 아무 주제(Subject)나 임의대로 사용할 수 없으며 일부 구현체는 주제를 다른 이름을 부르기도 한다(예를 들어, RxScala는 "주제(Subject)"를 "발행주제(PublishSubject)"로 부른다).
 </p>
 <h3>AysncSubject</h3>
 <figure>
  <img src="{{ site.url }}/documentation/operators/images/S.AsyncSubject.png" style="width:100%;" />
  <figcaption>
  <p>
-  <code>AsyncSubject</code>는 소스 Observable로부터 배출된 마지막 값(만) 배출하며 소스 Observalbe의 동작이 완료되고 나서야 동작한다. (만약, 소스 Observable이 아무 값도 배출하지 않으면 <code>AsyncSubject</code> 역시 아무 값도 배출하지 않는다.)
+  <code>AsyncSubject</code>는 소스 Observable로부터 배출된 마지막 값(만) 배출하며 소스 Observalbe의 동작이 완료된 후에야 동작한다. (만약, 소스 Observable이 아무 값도 배출하지 않으면 <code>AsyncSubject</code> 역시 아무 값도 배출하지 않는다.)
  </p>
 </figcaption>
 </figure>
@@ -71,7 +71,7 @@ id: subject
   <code>PublishSubject</code>는 구독 이후에 소스 Observable(들)이 배출한 항목들만 옵저버에게 배출한다.
  </p>
  <p>
-  주의할 점은, <code>PublishSubject</code>은 (이를 막지 않는 이상) 생성 시점에서 즉시 항목들을 배출하기 시작할 것이고 이런 특성으로 인해 주제가 생성되는 시점과 옵저버가 이 주제를 구독하기 시작하는 그 사이에 배출되는 항목들을 잃어 버릴 수 있다는 단점이 있다. 따라서, 소스 Observable이 배출하는 모든 항목들의 배출을 보장해야 한다면 <a href="operators/create.html"><code>Create</code></a>을 사용해서 명시적으로 "차가운" Observable(항목들을 배출하기 전에 모든 옵저버가 구독을 시작했는지 체크한다)을 생성하거나, PublishSubject 대신 <code>ReplaySubject</code>를 사용해야 한다.
+  주의할 점은, <code>PublishSubject</code>는 (이를 막지 않는 이상) 생성 시점에서 즉시 항목들을 배출하기 시작할 것이고 이런 특성 때문에 주제가 생성되는 시점과 옵저버가 이 주제를 구독하기 시작하는 그 사이에 배출되는 항목들을 잃어 버릴 수 있다는 단점이 있다. 따라서, 소스 Observable이 배출하는 모든 항목들의 배출을 보장해야 한다면 <a href="operators/create.html"><code>Create</code></a>을 사용해서 명시적으로 "차가운" Observable(항목들을 배출하기 전에 모든 옵저버가 구독을 시작했는지 체크한다)을 생성하거나, PublishSubject 대신 <code>ReplaySubject</code>를 사용해야 한다.
  </p>
  </figcaption>
 </figure>
@@ -87,13 +87,13 @@ id: subject
  <img src="{{ site.url }}/documentation/operators/images/S.ReplaySubject.png" style="width:100%;" />
  <figcaption>
  <p>
-  <code>ReplaySubject</code>은 옵저버가 구독을 시작한 시점과 관계 없이 소스 Observable(들)이 배출한 모든 항목들을 모든 옵저버에게 배출한다.
+  <code>ReplaySubject</code>는 옵저버가 구독을 시작한 시점과 관계 없이 소스 Observable(들)이 배출한 모든 항목들을 모든 옵저버에게 배출한다.
  </p>
  <p>
-  <code>ReplaySubject</code>는 몇 개의 생성자 오버로드를 제공하는데 이를 통해, 재생 버퍼의 크기가 특정 이상으로 증가할 경우, 또는 처음 배출 이후 지정한 시간이 경과할 경우 오래된 항목들을 제거할 수 있다.
+  <code>ReplaySubject</code>는 몇 개의 생성자 오버로드를 제공하는데 이를 통해, 재생 버퍼의 크기가 특정 이상으로 증가할 경우, 또는 처음 배출 이후 지정한 시간이 경과할 경우 오래된 항목들을 제거한다.
  </p>
  <p>
-  만약 <code>ReplaySubject</code>을 옵저버로 사용할 경우, 멀티 스레드 환경에서는 <a href="../contract.html">Observable 계약</a> 위반과 주제에서 어느 항목 또는 알림을 먼저 재생해야 하는지 알 수 없는 모호함이 동시에 발생할 수 있기 때문에 (비순차적) 호출을 유발시키는 <code>onNext</code>(또는 그 외 <code>on</code>) 메서드를 사용하지 않도록 주의해야 한다.
+  만약, <code>ReplaySubject</code>을 옵저버로 사용할 경우, 멀티 스레드 환경에서는 <a href="../contract.html">Observable 계약</a> 위반과 주제에서 어느 항목 또는 알림을 먼저 재생해야 하는지 알 수 없는 모호함이 동시에 발생할 수 있기 때문에 (비순차적) 호출을 유발시키는 <code>onNext</code>(또는 그 외 <code>on</code>) 메서드를 사용하지 않도록 주의해야 한다.
  </p></figcaption>
 </figure>
 <h4>참고</h4>
@@ -119,7 +119,7 @@ id: subject
 
   {% lang_operator RxGroovy %}
    <p>
-    만약 <code>Subject</code>를 정의했는데, 이를 <code>Subscriber</code> 인터페이스 없이 다른 에이전트에 전달하고 싶다면 그 Subject를 순수 <code>Observable</code>로 리턴하는 <code>asObservable</code> 메서드를 사용하면 된다.
+    만약, <code>Subject</code>를 정의했는데, 이를 <code>Subscriber</code> 인터페이스 없이 다른 에이전트에 전달하고 싶다면 그 Subject를 순수 <code>Observable</code>로 리턴하는 <code>asObservable</code> 메서드를 사용하면 된다.
    </p>
    <h4>참고</h4>
    <ul>
@@ -132,7 +132,7 @@ id: subject
 
   {% lang_operator RxJava %}
    <p>
-    만약 <code>Subject</code>를 정의했는데, 이를 <code>Subscriber</code> 인터페이스 없이 다른 에이전트에 전달하고 싶다면 그 Subject를 순수 <code>Observable</code>로 리턴하는 <code>asObservable</code> 메서드를 사용하면 된다.
+    만약, <code>Subject</code>를 정의했는데, 이를 <code>Subscriber</code> 인터페이스 없이 다른 에이전트에 전달하고 싶다면 그 Subject를 순수 <code>Observable</code>로 리턴하는 <code>asObservable</code> 메서드를 사용하면 된다.
    </p>
    <h4>참고</h4>
    <ul>
