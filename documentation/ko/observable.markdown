@@ -43,10 +43,10 @@ id: observable
 </p>
 <p>
  비동기 프로그래밍과 설계 모델을 이야기하기 위해서 많은 용어들이 사용되고 있지만, 이 문서에서는 다음의 용어들을 사용한다: <dfn>옵저버</dfn>는 <dfn>Observable</dfn>을 <dfn>구독한다</dfn>.
- Observable은 <dfn>항목들</dfn>을 <dfn>배출</dfn>하거나 observable의 메서드 호출을 통해 옵저버에게 <dfn>알림</dfn>을 보낸다.
+ Observable은 <dfn>항목들</dfn>을 <dfn>만들어내</dfn>거나 observable의 메서드 호출을 통해 옵저버에게 <dfn>알림</dfn>을 보낸다.
 </p>
 <p>
- 다양한 문서 또는 문맥에서 우리가 "옵저버"라고 말하는 것이 "구독자", "관찰자" 또는 "리액터"라고 불려지기도 하는데, 통상적으로 이 모델은 <a href="http://en.wikipedia.org/wiki/Reactor_pattern">리액터 패턴</a>을 말한다.
+ 다양한 문서 또는 문맥에서 우리가 "옵저버"라고 말하는 것이 "구독자", "관찰자" 또는 "리액터"라고 불려지기도 하는데, 통상적으로 이 모델은 <a href="http://en.wikipedia.org/wiki/Reactor_pattern">리액터 패턴(reactor pattern)</a>을 뜻한다.
 </p>
 <h1>옵저버 생성</h1>
 <p>
