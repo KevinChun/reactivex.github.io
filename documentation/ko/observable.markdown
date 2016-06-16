@@ -10,12 +10,17 @@ id: observable
  이 패턴은 동시성 연산을 가능하게 하는데, 그 이유는 옵저버는 더 이상 Observable이 객체를 내보낼 때까지 기다리지 않고 대신 어떤 객체가 배출되는 시점을 감시하는 관찰자를 옵저버 안에 만들어 놓고 관찰자를 통해 알림을 받기 때문이다.
 </p>
 <p>
+ ReactiveX에서는 <dfn>옵저버</dfn>가 <dfn>Observable</dfn>을 <dfn>구독한다</dfn>. 그 후 Obseravable이 <dfn>발행하는</dfn> 항목 혹은 연속된 항목에 따라 옵저버는 반응한다. 
+ 이 패턴은 동시성 연산을 가능하게 하는데, 그 이유는 옵저버는 Observable이 만드는 객체를 기다리지 않는다.
+ 대신, Observable이 무엇을 만들어내든 그것에 적당하게 반응하도록 대기하는 옵저버 형태의 감시자를 만든다.
+</p>
+<p>
  이 문서에서는 리액티브 패턴이 무엇이고 Observable과 옵저버가 무엇인지(그리고 어떻게 옵저버가 observable을 구독하는지)를 설명한다.
  그 다음에는 <a href="../operators.html">다양한 Observable 연산자</a>를 어떻게 Obseravable에 연결 시키는지 또, 어떻게 Observable의 행동을 변경 시킬 수 있는지 설명한다.
 </p>
 <figure>
  <figcaption>
-  <p>이 문서에서는 &ldquo;마블 다이어그램&rdquo;을 활용해서 필요한 내용을 설명한다. 아래는 어떻게 마블 다이어그램이 Observable과 Observable의 전환을 표현하는지 예제로 보여주고 있다.</p>
+  <p>이 문서에서는 &ldquo;마블 다이어그램&rdquo;을 활용해서 필요한 내용을 설명한다. 아래는 마블 다이어그램이 어떻게 Observable과 Observable의 변환을 표현하는지 보여주고 있다.</p>
  </figcaption>
  <img src="{{ site.url }}/assets/operators/legend.png" style="width:100%;" />
 </figure>
