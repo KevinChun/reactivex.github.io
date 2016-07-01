@@ -43,27 +43,27 @@ Observable 연산자 체인은 원본 Observable과 독립적으로 실행될 �
 
 새로운 Observable을 만드는 연산자들.
 
-* [**`Create`**]({{ site.url }}/documentation/operators/create.html) — create an Observable from scratch by calling observer methods programmatically
-* [**`Defer`**]({{ site.url }}/documentation/operators/defer.html) — do not create the Observable until the observer subscribes, and create a fresh Observable for each observer
-* [**`Empty`/`Never`/`Throw`**]({{ site.url }}/documentation/operators/empty-never-throw.html) — create Observables that have very precise and limited behavior
-* [**`From`**]({{ site.url }}/documentation/operators/from.html) — convert some other object or data structure into an Observable
-* [**`Interval`**]({{ site.url }}/documentation/operators/interval.html) — create an Observable that emits a sequence of integers spaced by a particular time interval
-* [**`Just`**]({{ site.url }}/documentation/operators/just.html) — convert an object or a set of objects into an Observable that emits that or those objects
-* [**`Range`**]({{ site.url }}/documentation/operators/range.html) — create an Observable that emits a range of sequential integers
-* [**`Repeat`**]({{ site.url }}/documentation/operators/repeat.html) — create an Observable that emits a particular item or sequence of items repeatedly
-* [**`Start`**]({{ site.url }}/documentation/operators/start.html) — create an Observable that emits the return value of a function
-* [**`Timer`**]({{ site.url }}/documentation/operators/timer.html) — create an Observable that emits a single item after a given delay
+* [**`Create`**]({{ site.url }}/documentation/operators/create.html) — 구현된 옵저버 메서드 호출을 통해 최초 Observable을 생성한다
+* [**`Defer`**]({{ site.url }}/documentation/operators/defer.html) — 옵저버가 구독을 하기 전까지는 Observable을 만들지 않고 있다가 구독이 시작되면 옵저버 별로 Observable을 생성한다
+* [**`Empty`/`Never`/`Throw`**]({{ site.url }}/documentation/operators/empty-never-throw.html) — 아주 정확하고 제한된 행동을 하는 Observable을 생성한다
+* [**`From`**]({{ site.url }}/documentation/operators/from.html) — 다른 객체나 자료 구조를 Observable로 변환한다
+* [**`Interval`**]({{ site.url }}/documentation/operators/interval.html) — 특정한 시간 간격별로 연속된 정수형을 발행하는 Observable을 생성한다
+* [**`Just`**]({{ site.url }}/documentation/operators/just.html) — 하나 또는 복수 개의 객채들을 Observable로 변환하며 변환된 Observable은 원본 객체들을 발행한다
+* [**`Range`**]({{ site.url }}/documentation/operators/range.html) — 범위로 구성된(Range) 정수형을 발행하는 Observable을 생성한다
+* [**`Repeat`**]({{ site.url }}/documentation/operators/repeat.html) — 특정 항목이나 연속된 항목들을 반복적으로 배출하는 Observable을 생성한다
+* [**`Start`**]({{ site.url }}/documentation/operators/start.html) — 함수의 결과를 발행하는 Observable을 생성한다
+* [**`Timer`**]({{ site.url }}/documentation/operators/timer.html) — 주어진 시간 후에 하나의 항목을 배출하는 Observable을 생성한다
 
 <h2 id="transforming">Observable 변환</h2>
 
 Observable이 배출한 항목들을 변환하는 연산자들.
 
-* [**`Buffer`**]({{ site.url }}/documentation/operators/buffer.html) — periodically gather items from an Observable into bundles and emit these bundles rather than emitting the items one at a time
-* [**`FlatMap`**]({{ site.url }}/documentation/operators/flatmap.html) — transform the items emitted by an Observable into Observables, then flatten the emissions from those into a single Observable
-* [**`GroupBy`**]({{ site.url }}/documentation/operators/groupby.html) — divide an Observable into a set of Observables that each emit a different group of items from the original Observable, organized by key
-* [**`Map`**]({{ site.url }}/documentation/operators/map.html) — transform the items emitted by an Observable by applying a function to each item
-* [**`Scan`**]({{ site.url }}/documentation/operators/scan.html) — apply a function to each item emitted by an Observable, sequentially, and emit each successive value
-* [**`Window`**]({{ site.url }}/documentation/operators/window.html) — periodically subdivide items from an Observable into Observable windows and emit these windows rather than emitting the items one at a time
+* [**`Buffer`**]({{ site.url }}/documentation/operators/buffer.html) — Observable로부터 정기적으로 항목들을 수집한 후 묶음으로 만든 후에 묶음 안에 있는 항목들을 한번에 하나씩 발행하지 않고 수집된 묶음 단위로 발행한다
+* [**`FlatMap`**]({{ site.url }}/documentation/operators/flatmap.html) — 하나의 Observable이 발행한 항목들을 복수개의 Observable로 변환 후, 항목들의 배출을 차례차례 줄 세워 하나의 Observable로 전달한다
+* [**`GroupBy`**]({{ site.url }}/documentation/operators/groupby.html) — 원본 Observable로부터 키에 해당하는 그룹을 분류시키도록 하나의 Observable을 여러 Observable로 분리시키며 나눠진 Observable은 해당 그룹에 속한 항목들을 배출한다
+* [**`Map`**]({{ site.url }}/documentation/operators/map.html) — Observable이 배출한 항목에 함수를 적용시킨다
+* [**`Scan`**]({{ site.url }}/documentation/operators/scan.html) — Observable이 배출한 항목에 연속적으로 함수를 적용하고 실행시켜 성공적으로 실행한 값을 발행한다
+* [**`Window`**]({{ site.url }}/documentation/operators/window.html) — Observable로부터 항목들을 정기적으로 더 작은 단위의 Observable 윈도우로 나누고 항목을 한번에 하나씩 발행하기 보단 작게 나눠진 윈도우 단위로 발행한다
 
 <h2 id="filtering">Observable 필터링</h2>
 
