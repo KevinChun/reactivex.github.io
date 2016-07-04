@@ -41,7 +41,7 @@ Observable 연산자 체인은 원본 Observable과 독립적으로 실행될 �
 
 <h2 id="creating">Observable 생성</h2>
 
-새로운 Observable을 만드는 연산자들.
+새로운 Observable을 만드는 연산자들
 
 * [**`Create`**]({{ site.url }}/documentation/operators/create.html) — 구현된 옵저버 메서드 호출을 통해 최초 Observable을 생성한다
 * [**`Defer`**]({{ site.url }}/documentation/operators/defer.html) — 옵저버가 구독을 하기 전까지는 Observable을 만들지 않고 있다가 구독이 시작되면 옵저버 별로 Observable을 생성한다
@@ -56,7 +56,7 @@ Observable 연산자 체인은 원본 Observable과 독립적으로 실행될 �
 
 <h2 id="transforming">Observable 변환</h2>
 
-Observable이 배출한 항목들을 변환하는 연산자들.
+Observable이 배출한 항목들을 변환하는 연산자들
 
 * [**`Buffer`**]({{ site.url }}/documentation/operators/buffer.html) — Observable로부터 정기적으로 항목들을 수집한 후 묶음으로 만든 후에 묶음 안에 있는 항목들을 한번에 하나씩 발행하지 않고 수집된 묶음 단위로 발행한다
 * [**`FlatMap`**]({{ site.url }}/documentation/operators/flatmap.html) — 하나의 Observable이 발행한 항목들을 복수개의 Observable로 변환 후, 항목들의 배출을 차례차례 줄 세워 하나의 Observable로 전달한다
@@ -67,51 +67,51 @@ Observable이 배출한 항목들을 변환하는 연산자들.
 
 <h2 id="filtering">Observable 필터링</h2>
 
-소스 Observable에서 선택적으로 항목을 배출하는 연산자들.
+소스 Observable에서 선택적으로 항목을 배출하는 연산자들
 
-* [**`Debounce`**]({{ site.url }}/documentation/operators/debounce.html) — only emit an item from an Observable if a particular timespan has passed without it emitting another item
-* [**`Distinct`**]({{ site.url }}/documentation/operators/distinct.html) — suppress duplicate items emitted by an Observable
-* [**`ElementAt`**]({{ site.url }}/documentation/operators/elementat.html) — emit only item <i>n</i> emitted by an Observable
-* [**`Filter`**]({{ site.url }}/documentation/operators/filter.html) — emit only those items from an Observable that pass a predicate test
-* [**`First`**]({{ site.url }}/documentation/operators/first.html) — emit only the first item, or the first item that meets a condition, from an Observable
-* [**`IgnoreElements`**]({{ site.url }}/documentation/operators/ignoreelements.html) — do not emit any items from an Observable but mirror its termination notification
-* [**`Last`**]({{ site.url }}/documentation/operators/last.html) — emit only the last item emitted by an Observable
-* [**`Sample`**]({{ site.url }}/documentation/operators/sample.html) — emit the most recent item emitted by an Observable within periodic time intervals
-* [**`Skip`**]({{ site.url }}/documentation/operators/skip.html) — suppress the first <i>n</i> items emitted by an Observable
-* [**`SkipLast`**]({{ site.url }}/documentation/operators/skiplast.html) — suppress the last <i>n</i> items emitted by an Observable
-* [**`Take`**]({{ site.url }}/documentation/operators/take.html) — emit only the first <i>n</i> items emitted by an Observable
-* [**`TakeLast`**]({{ site.url }}/documentation/operators/takelast.html) — emit only the last <i>n</i> items emitted by an Observable
+* [**`Debounce`**]({{ site.url }}/documentation/operators/debounce.html) — 다른 항목들을 배출하지 않은 채 특정 시간이 지났다면 Observable로부터 항목 하나를 배출한다
+* [**`Distinct`**]({{ site.url }}/documentation/operators/distinct.html) — Observable로부터 배출된 항목들 중 중복된 항목을 제거한다
+* [**`ElementAt`**]({{ site.url }}/documentation/operators/elementat.html) — Obserable로부터 <i>n</i>번째 항목만 배출한다
+* [**`Filter`**]({{ site.url }}/documentation/operators/filter.html) — 테스트 조건을 만족하는 항목들만 배출한다
+* [**`First`**]({{ site.url }}/documentation/operators/first.html) — 맨 첫 번째 항목 또는 조건을 만족하는 첫 번째 항목만 배출한다
+* [**`IgnoreElements`**]({{ site.url }}/documentation/operators/ignoreelements.html) — 항목들을 배출하지는 않지만 종료 알림은 보낸다
+* [**`Last`**]({{ site.url }}/documentation/operators/last.html) — Observable로부터 마지막 항목만 배출한다
+* [**`Sample`**]({{ site.url }}/documentation/operators/sample.html) — 특정 시간 간격으로 최근에 Observable이 발행한 항목들을 배출한다
+* [**`Skip`**]({{ site.url }}/documentation/operators/skip.html) — Observable 발행한 처음 <i>n</i>개의 항목들을 숨긴다
+* [**`SkipLast`**]({{ site.url }}/documentation/operators/skiplast.html) — Observable이 발행한 마지막 <i>n</i>개의 항목들을 숨긴다
+* [**`Take`**]({{ site.url }}/documentation/operators/take.html) — Observable이 발행한 처음 <i>n</i>개의 항목들만 배출한다
+* [**`TakeLast`**]({{ site.url }}/documentation/operators/takelast.html) — Observable이 발행한 마지막 <i>n</i>개의 항목들만 배출한다
 
-<h2 id="combining">Combining Observables</h2>
+<h2 id="combining">Observables 결합</h2>
 
-Operators that work with multiple source Observables to create a single Observable
+여러 개의 소스 Observable들을 하나의 Observable로 만드는 연산자들
 
-* [**`And`/`Then`/`When`**]({{ site.url }}/documentation/operators/and-then-when.html) — combine sets of items emitted by two or more Observables by means of `Pattern` and `Plan` intermediaries
-* [**`CombineLatest`**]({{ site.url }}/documentation/operators/combinelatest.html) — when an item is emitted by either of two Observables, combine the latest item emitted by each Observable via a specified function and emit items based on the results of this function
-* [**`Join`**]({{ site.url }}/documentation/operators/join.html) — combine items emitted by two Observables whenever an item from one Observable is emitted during a time window defined according to an item emitted by the other Observable
-* [**`Merge`**]({{ site.url }}/documentation/operators/merge.html) — combine multiple Observables into one by merging their emissions
-* [**`StartWith`**]({{ site.url }}/documentation/operators/startwith.html) — emit a specified sequence of items before beginning to emit the items from the source Observable
-* [**`Switch`**]({{ site.url }}/documentation/operators/switch.html) — convert an Observable that emits Observables into a single Observable that emits the items emitted by the most-recently-emitted of those Observables
-* [**`Zip`**]({{ site.url }}/documentation/operators/zip.html) — combine the emissions of multiple Observables together via a specified function and emit single items for each combination based on the results of this function
+* [**`And`/`Then`/`When`**]({{ site.url }}/documentation/operators/and-then-when.html) — 두 개 이상의 Observable들이 배출한 항목들을 'Pattern'과 'Plan' 중계자를 이용해서 결합한다
+* [**`CombineLatest`**]({{ site.url }}/documentation/operators/combinelatest.html) — 두 개의 Observable 중 하나가 항목을 배출할 때 배출된 맨 마지막 항목을 명시된 함수를 통해 결합하고 이 함수의 결과를 배출한다
+* [**`Join`**]({{ site.url }}/documentation/operators/join.html) — A Observable과 B Observable이 배출한 항목들을 결합하는데, 이때 B Observable은 배출한 항목이 타임 윈도우를 가지고 있고 이 타임 윈도우가 열려 있는 동안 A Observable은 항목의 배출을 계속한다. Join 연산자는 B Observable의 항목을 배출하고 배출된 이 항목은 타임 윈도우를 시작하며 그 시간 동안 A Observable은 자신의 항목들을 계속 배출하여 이 두 항목들을 결합한다.
+* [**`Merge`**]({{ site.url }}/documentation/operators/merge.html) — 복수 개의 Observable들이 배출하는 항목들을 머지하여 하나의 Observable로 만든다
+* [**`StartWith`**]({{ site.url }}/documentation/operators/startwith.html) — 소스 Observable이 항목 배출을 시작하기 전에 배출 순서를 지정할 수 있다.
+* [**`Switch`**]({{ site.url }}/documentation/operators/switch.html) — Observable들을 배출하는 Observable을 싱글 Observable로 변환하다. 변환된 싱글 Observable은 변환 전 소스 Observable들이 배출한 항목들을 배출한다
+* [**`Zip`**]({{ site.url }}/documentation/operators/zip.html) — 명시된 함수를 통해 여러 Observable들이 배출한 항목들을 결합하고 함수의 실행 결과를 항목으로 배출한다
 
-<h2 id="error">Error Handling Operators</h2>
+<h2 id="error">오류 처리 연산자</h2>
 
-Operators that help to recover from error notifications from an Observable
+Observable이 던진 오류를 복구할 수 있도록 도와주는 연산자들
 
-* [**`Catch`**]({{ site.url }}/documentation/operators/catch.html) — recover from an `onError` notification by continuing the sequence without error
-* [**`Retry`**]({{ site.url }}/documentation/operators/retry.html) — if a source Observable sends an `onError` notification, resubscribe to it in the hopes that it will complete without error
+* [**`Catch`**]({{ site.url }}/documentation/operators/catch.html) — 오류를 제외하고 연속된 발행을 계속 진행시켜 'onError'로부터 전달된 오류를 복구한다
+* [**`Retry`**]({{ site.url }}/documentation/operators/retry.html) — 만약 소스 Observable이 'onError' 알림을 보낼 경우, 오류 없이 실행이 완료되기를 기대하며 재구독을 시도한다
 
-<h2 id="utility">Observable Utility Operators</h2>
+<h2 id="utility">Observable 유틸리티 연산자</h2>
 
-A toolbox of useful Operators for working with Observables
+Obserable과 함께 동작하는 유용한 도우미 연산자들
 
-* [**`Delay`**]({{ site.url }}/documentation/operators/delay.html) — shift the emissions from an Observable forward in time by a particular amount
-* [**`Do`**]({{ site.url }}/documentation/operators/do.html) — register an action to take upon a variety of Observable lifecycle events
-* [**`Materialize`/`Dematerialize`**]({{ site.url }}/documentation/operators/materialize-dematerialize.html) — represent both the items emitted and the notifications sent as emitted items, or reverse this process
-* [**`ObserveOn`**]({{ site.url }}/documentation/operators/observeon.html) — specify the scheduler on which an observer will observe this Observable
-* [**`Serialize`**]({{ site.url }}/documentation/operators/serialize.html) — force an Observable to make serialized calls and to be well-behaved
-* [**`Subscribe`**]({{ site.url }}/documentation/operators/subscribe.html) — operate upon the emissions and notifications from an Observable
-* [**`SubscribeOn`**]({{ site.url }}/documentation/operators/subscribeon.html) — specify the scheduler an Observable should use when it is subscribed to
+* [**`Delay`**]({{ site.url }}/documentation/operators/delay.html) — Observable의 배출을 특정 시간 만큼 뒤로 미룬다
+* [**`Do`**]({{ site.url }}/documentation/operators/do.html) — Observable의 생명주기 동안 발생하는 다양한 이벤트에서 실행 될 액션을 등록한다
+* [**`Materialize`/`Dematerialize`**]({{ site.url }}/documentation/operators/materialize-dematerialize.html) — 배출된 항목과 전달된 알림의 메타 정보를 제공하거나 반대로 메타정보로 항목과 알림을 배출한다
+* [**`ObserveOn`**]({{ site.url }}/documentation/operators/observeon.html) — 옵저버가 Observable을 관찰할 스케줄러를 명시한다
+* [**`Serialize`**]({{ site.url }}/documentation/operators/serialize.html) — Observable이 직렬화된 호출을 생성해서 제대로 동작하도록 강제한다
+* [**`Subscribe`**]({{ site.url }}/documentation/operators/subscribe.html) — Observable이 배출하는 항목과 알림 위에서 동작한다
+* [**`SubscribeOn`**]({{ site.url }}/documentation/operators/subscribeon.html) — Observable이 구독될 때 Observable이 사용할 스케줄러를 명시한다
 * [**`TimeInterval`**]({{ site.url }}/documentation/operators/timeinterval.html) — convert an Observable that emits items into one that emits indications of the amount of time elapsed between those emissions
 * [**`Timeout`**]({{ site.url }}/documentation/operators/timeout.html) — mirror the source Observable, but issue an error notification if a particular period of time elapses without any emitted items
 * [**`Timestamp`**]({{ site.url }}/documentation/operators/timestamp.html) — attach a timestamp to each item emitted by an Observable
