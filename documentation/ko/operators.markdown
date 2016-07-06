@@ -112,53 +112,53 @@ Obserable과 함께 동작하는 유용한 도우미 연산자들
 * [**`Serialize`**]({{ site.url }}/documentation/operators/serialize.html) — Observable이 직렬화된 호출을 생성해서 제대로 동작하도록 강제한다
 * [**`Subscribe`**]({{ site.url }}/documentation/operators/subscribe.html) — Observable이 배출하는 항목과 알림 위에서 동작한다
 * [**`SubscribeOn`**]({{ site.url }}/documentation/operators/subscribeon.html) — Observable이 구독될 때 Observable이 사용할 스케줄러를 명시한다
-* [**`TimeInterval`**]({{ site.url }}/documentation/operators/timeinterval.html) — convert an Observable that emits items into one that emits indications of the amount of time elapsed between those emissions
-* [**`Timeout`**]({{ site.url }}/documentation/operators/timeout.html) — mirror the source Observable, but issue an error notification if a particular period of time elapses without any emitted items
-* [**`Timestamp`**]({{ site.url }}/documentation/operators/timestamp.html) — attach a timestamp to each item emitted by an Observable
-* [**`Using`**]({{ site.url }}/documentation/operators/using.html) — create a disposable resource that has the same lifespan as the Observable
+* [**`TimeInterval`**]({{ site.url }}/documentation/operators/timeinterval.html) — 항목들을 배출하는 Observable을 항목을 배출하는데 걸린 시간이 얼마인지를 가리키는 Observable로 변환한다
+* [**`Timeout`**]({{ site.url }}/documentation/operators/timeout.html) — 소스 Obvservable을 그대로 전달하지만, 대신 특정 시간 동안 배출된 항목이 없으면 오류 알림을 발생시킨다
+* [**`Timestamp`**]({{ site.url }}/documentation/operators/timestamp.html) — Observable이 배출한 항목에 타임 스탬프를 추가한다
+* [**`Using`**]({{ site.url }}/documentation/operators/using.html) — 소스 Observable과 동일한 생명주기를 갖는 사용 후 종료되는 리소스를 Observable로 생성한다
 
-<h2 id="conditional">Conditional and Boolean Operators</h2>
+<h2 id="conditional">조건과 불린 연산자(Boolean)</h2>
 
-Operators that evaluate one or more Observables or items emitted by Observables
+하나 이상의 Observable 또는 Observable이 배출한 항목을 평가하는 연산자들
 
-* [**`All`**]({{ site.url }}/documentation/operators/all.html) — determine whether all items emitted by an Observable meet some criteria
-* [**`Amb`**]({{ site.url }}/documentation/operators/amb.html) — given two or more source Observables, emit all of the items from only the first of these Observables to emit an item
-* [**`Contains`**]({{ site.url }}/documentation/operators/contains.html) — determine whether an Observable emits a particular item or not
-* [**`DefaultIfEmpty`**]({{ site.url }}/documentation/operators/defaultifempty.html) — emit items from the source Observable, or a default item if the source Observable emits nothing
-* [**`SequenceEqual`**]({{ site.url }}/documentation/operators/sequenceequal.html) — determine whether two Observables emit the same sequence of items
-* [**`SkipUntil`**]({{ site.url }}/documentation/operators/skipuntil.html) — discard items emitted by an Observable until a second Observable emits an item
-* [**`SkipWhile`**]({{ site.url }}/documentation/operators/skipwhile.html) — discard items emitted by an Observable until a specified condition becomes false
-* [**`TakeUntil`**]({{ site.url }}/documentation/operators/takeuntil.html) — discard items emitted by an Observable after a second Observable emits an item or terminates
-* [**`TakeWhile`**]({{ site.url }}/documentation/operators/takewhile.html) — discard items emitted by an Observable after a specified condition becomes false
+* [**`All`**]({{ site.url }}/documentation/operators/all.html) — Observable이 배출한 전체 항목들이 어떤 조건을 만족시키는지 판단한다
+* [**`Amb`**]({{ site.url }}/documentation/operators/amb.html) — 두 개 이상의 소스 Observable이 주어 질때, 그 중 첫 번째로 항목을 배출한 Observable의 항목들을 전달한다
+* [**`Contains`**]({{ site.url }}/documentation/operators/contains.html) — Observable이 특정 항목을 배출하는지 아닌지를 판단한다
+* [**`DefaultIfEmpty`**]({{ site.url }}/documentation/operators/defaultifempty.html) — 소스 Observable이 배출하는 항목을 전달한다. 만약 배출되는 항목이 없으면 기본 항목을 배출한다
+* [**`SequenceEqual`**]({{ site.url }}/documentation/operators/sequenceequal.html) — 두 개의 Observable이 항목을 같은 순서로 배출하는지 판단한다
+* [**`SkipUntil`**]({{ site.url }}/documentation/operators/skipuntil.html) — 두 번째 Observable이 항목을 배출하기 전까지 배출된 항목들을 버린다
+* [**`SkipWhile`**]({{ site.url }}/documentation/operators/skipwhile.html) — 특정 조건이 false를 리턴하기 전까지 Observable이 배출한 항목들을 버린다
+* [**`TakeUntil`**]({{ site.url }}/documentation/operators/takeuntil.html) — 두 번째 Observable이 항목을 발행하기 시작하거나 두 번째 Observable이 종료되면 그 때부터 발행되는 항목들을 버린다
+* [**`TakeWhile`**]({{ site.url }}/documentation/operators/takewhile.html) — 특정 조건이 false를 리턴하기 시작하면 그 이후에 배출되는 항목들을 버린다
 
-<h2 id="mathematical">Mathematical and Aggregate Operators</h2>
+<h2 id="mathematical">수학과 집계 연산자</h2>
 
-Operators that operate on the entire sequence of items emitted by an Observable
+Observable이 배출하는 항목 전체를 대상으로 동작하는 연산자들
 
-* [**`Average`**]({{ site.url }}/documentation/operators/average.html) — calculates the average of numbers emitted by an Observable and emits this average
-* [**`Concat`**]({{ site.url }}/documentation/operators/concat.html) — emit the emissions from two or more Observables without interleaving them
-* [**`Count`**]({{ site.url }}/documentation/operators/count.html) — count the number of items emitted by the source Observable and emit only this value
-* [**`Max`**]({{ site.url }}/documentation/operators/max.html) — determine, and emit, the maximum-valued item emitted by an Observable
-* [**`Min`**]({{ site.url }}/documentation/operators/min.html) — determine, and emit, the minimum-valued item emitted by an Observable
-* [**`Reduce`**]({{ site.url }}/documentation/operators/reduce.html) — apply a function to each item emitted by an Observable, sequentially, and emit the final value
-* [**`Sum`**]({{ site.url }}/documentation/operators/sum.html) — calculate the sum of numbers emitted by an Observable and emit this sum
+* [**`Average`**]({{ site.url }}/documentation/operators/average.html) — Observable이 발행한 항목의 평균 값 계산하고 발행한다
+* [**`Concat`**]({{ site.url }}/documentation/operators/concat.html) — 두 개 이상의 Observable들이 항목을 발행할 때 Observable의 순서대로 각각 항목을 배출하도록 연결시킨다
+* [**`Count`**]({{ site.url }}/documentation/operators/count.html) — 소스 Observable이 발행한 항목의 개수를 계산하고 결과만 배출한다
+* [**`Max`**]({{ site.url }}/documentation/operators/max.html) — Observable이 발행한 항목 중 값이 가장 큰 항목을 판단하고 배출한다
+* [**`Min`**]({{ site.url }}/documentation/operators/min.html) — Observable이 발행한 항목 중 값이 가장 작은 항목을 판단한고 배출한다
+* [**`Reduce`**]({{ site.url }}/documentation/operators/reduce.html) — Observable이 배출한 각각의 항목에 함수를 순서대로 적용하고 함수를 연산한 후 최종 결과를 발행한다
+* [**`Sum`**]({{ site.url }}/documentation/operators/sum.html) — Observable이 배출한 항목의 합계를 계산하고 합계 결과를 배출한다
 
-<h2 id="backpressure">Backpressure Operators</h2>
+<h2 id="backpressure">역압(Backpressure) 연산자</h2>
 
-* [**backpressure operators**]({{ site.url }}/documentation/operators/backpressure.html) — strategies for coping with Observables that produce items more rapidly than their observers consume them
+* [**backpressure operators**]({{ site.url }}/documentation/operators/backpressure.html) — 옵저버가 소비하는 것보다 더 빠르게 항목들을 생산하는 Observable을 복재하는 전략
 
-<h2 id="connectable">Connectable Observable Operators</h2>
+<h2 id="connectable">연결 가능한 Observable 연산자</h2>
 
-Specialty Observables that have more precisely-controlled subscription dynamics
+좀 더 정확히 제어되는 구독 역학을 가진 전문 Observable들
 
-* [**`Connect`**]({{ site.url }}/documentation/operators/connect.html) — instruct a connectable Observable to begin emitting items to its subscribers
-* [**`Publish`**]({{ site.url }}/documentation/operators/publish.html) — convert an ordinary Observable into a connectable Observable
-* [**`RefCount`**]({{ site.url }}/documentation/operators/refcount.html) — make a Connectable Observable behave like an ordinary Observable
-* [**`Replay`**]({{ site.url }}/documentation/operators/replay.html) — ensure that all observers see the same sequence of emitted items, even if they subscribe after the Observable has begun emitting items
+* [**`Connect`**]({{ site.url }}/documentation/operators/connect.html) — 구독자에게 항목 배출을 시작 하도록 연결 가능한 Observable에게 명령을 내린다
+* [**`Publish`**]({{ site.url }}/documentation/operators/publish.html) — 일반 Observable을 연결 가능한 Observable로 변환한다
+* [**`RefCount`**]({{ site.url }}/documentation/operators/refcount.html) — 일반 Observablec처럼 동작하는 연결 가능한 Observable을 만든다
+* [**`Replay`**]({{ site.url }}/documentation/operators/replay.html) — 비록 옵저버가 Observable이 항목 배출을 시작한 이후에 구독을 했다 하더라도 배출된 모든 항목들을 볼 수 있게 한다
 
-<h2 id="conversion">Operators to Convert Observables</h2>
+<h2 id="conversion">Observable 변환 연산자</h2>
 
-* [**`To`**]({{ site.url }}/documentation/operators/to.html) — convert an Observable into another object or data structure
+* [**`To`**]({{ site.url }}/documentation/operators/to.html) — Observable을 다른 객체나 자료 구조로 변환한다
 
 <div id="tree">
 <style>
