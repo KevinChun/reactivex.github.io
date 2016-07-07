@@ -186,67 +186,67 @@ Observable이 배출하는 항목 전체를 대상으로 동작하는 연산자�
 </style>
   <h1>Observable 연산자 결정 트리</h1>
   <p>
-   This tree can help you find the ReactiveX Observable operator you&#8217;re looking for.
+   이 트리는 여러분이 필요로 하는 ReactiveX의 Observable 연산자를 찾는데 도움을 줄 것이다.
   </p>
 <dl id="outer">
- <dt>I want to create a new Observable</dt>
+ <dt>나는 새로운 Observable을 생성하고 싶은데 그 Observable이</dt>
   <dd class="sub"><dl>
-   <dt>that emits a particular item</dt>
+   <dt>특정 항목 하나를 생성해야 한다면</dt>
     <dd><a href="operators/just.html">Just</a></dd>
     <dd class="sub"><dl>
-     <dt>that was returned from a function called at subscribe-time</dt>
+     <dt>구독 시점에서 함수 호출로 생성된 항목을 리턴해야 한다면</dt>
       <dd><a href="operators/start.html">Start</a></dd>
-     <dt>that was returned from an <code>Action</code>, <code>Callable</code>, <code>Runnable</code>, or something of that sort, called at subscribe-time</dt>
+     <dt>구독 시점에서 호출되는 <code>Action</code>, <code>Callable</code>, <code>Runnable</code> 또는 함수 등을 통해 항목을 생성해서 리턴해야 한다면</dt>
       <dd><a href="operators/from.html">From</a></dd>
-     <dt>after a specified delay</dt>
+     <dt>특정 시간동안 항목 배출을 지연시켜야 한다면</dt>
       <dd><a href="operators/timer.html">Timer</a></dd>
      </dl></dd>
-   <dt>that pulls its emissions from a particular <code>Array</code>, <code>Iterable</code>, or something like that</dt>
+   <dt>특정 <code>Array</code>, <code>Iterable</code> 또는 비슷한 형태의 소스로부터 항목들을 배출해야 한다면</dt>
     <dd><a href="operators/from.html">From</a></dd>
-   <dt>by retrieving it from a Future</dt>
+   <dt>퓨처에서 항목을 조회해서 배출해야 한다면</dt>
     <dd><a href="operators/start.html">Start</a></dd>
-   <dt>that obtains its sequence from a Future</dt>
+   <dt>퓨처로부터 연속된 항목을 가져와야 한다면</dt>
     <dd><a href="operators/from.html">From</a></dd>
-   <dt>that emits a sequence of items repeatedly</dt>
+   <dt>반복적으로 연속된 항목을 배출해야 한다면</dt>
     <dd><a href="operators/repeat.html">Repeat</a></dd>
-   <dt>from scratch, with custom logic</dt>
+   <dt>사용자가 정의한 로직을 통해 생성되어야 한라면</dt>
     <dd><a href="operators/create.html">Create</a></dd>
-   <dt>for each observer that subscribes</dt>
+   <dt>각각의 옵저버가 Observable을 구독한 후에 생성되어야 한다면</dt>
     <dd><a href="operators/defer.html">Defer</a></dd>
-   <dt>that emits a sequence of integers</dt>
+   <dt>연속된 정수를 배출해야 한다면</dt>
     <dd><a href="operators/range.html">Range</a></dd>
     <dd class="sub"><dl>
-     <dt>at particular intervals of time</dt>
+     <dt>특정 시간 간격별로 항목을 배출해야 한다면</dt>
       <dd><a href="operators/interval.html">Interval</a></dd>
       <dd class="sub"><dl>
-       <dt>after a specified delay</dt>
+       <dt>특정 시간 후에 항목을 배출해야 한다면</dt>
        <dd><a href="operators/timer.html">Timer</a></dd>
       </dl></dd>
     </dl></dd>
-   <dt>that completes without emitting items</dt>
+   <dt>항목 배출 없이 실행을 완료해야 한다면</dt>
     <dd><a href="operators/empty-never-throw.html">Empty</a></dd>
-   <dt>that does nothing at all</dt>
+   <dt>아무것도 가지고 있지 말아야 한다면</dt>
     <dd><a href="operators/empty-never-throw.html">Never</a></dd>
   </dl></dd>
 
- <dt>I want to create an Observable by combining other Observables</dt>
+ <dt>다른 Observable을 결합시켜 새로운 Observable을 생성하고 싶다</dt>
   <dd class="sub"><dl>
-   <dt>and emitting all of the items from all of the Observables in whatever order they are received</dt>
+   <dt>그리고 순서에 상관없이 전달 된 모든 Observable이 가진 항목 전체를 배출하고 싶다</dt>
     <dd><a href="operators/merge.html">Merge</a></dd>
-   <dt>and emitting all of the items from all of the Observables, one Observable at a time</dt>
+   <dt>그리고 전달 된 Observable 순서대로 Observable이 가진 모든 항목들을 배출하고 싶다</dt>
     <dd><a href="operators/concat.html">Concat</a></dd>
-   <dt>by combining the items from two or more Observables sequentially to come up with new items to emit</dt>
+   <dt>생성하고 싶은 Observable은 두 개 이상의 Observable이 가진 항목들을 순서대로 결합시켜 새로운 항목을 배출하고 싶은데</dt>
     <dd class="sub"><dl>
-     <dt>whenever <em>each</em> of the Observables has emitted a new item</dt>
+     <dt><em>각각</em>의 Observable이 항목을 배출 할 때마다 새로운 항목을 배출시켜야 한다면</dt>
       <dd><a href="operators/zip.html">Zip</a></dd>
-     <dt>whenever <em>any</em> of the Observables has emitted a new item</dt>
+     <dt>Observable 중 <em>하나</em>라도 항목을 배출시킬 경우에 새로운 항목을 배출해야 한다면</dt>
       <dd><a href="operators/combinelatest.html">CombineLatest</a></dd>
-     <dt>whenever an item is emitted by one Observable in a window defined by an item emitted by another</dt>
+     <dt>하나의 Observable이 배출한 항목의 타임 윈도우가 열려있는 시간 동안 다른 Observable이 항목을 배출할 때마다 새로운 항목을 배출해야 한다면</dt>
       <dd><a href="operators/join.html">Join</a></dd>
-     <dt>by means of <code>Pattern</code> and <code>Plan</code> intermediaries</dt>
+     <dt><code>Pattern</code>과 <code>Plan</code> 중계자를 이용해서 항목을 배출해야 한다면</dt>
       <dd><a href="operators/and-then-when.html">And/Then/When</a></dd>
     </dl></dd>
-   <dt>and emitting the items from only the most-recently emitted of those Observables</dt>
+   <dt>그리고 가장 최근에 항목을 배출한 Observable을 통해서만 항목을 배출하고 싶다면</dt>
     <dd><a href="operators/switch.html">Switch</a></dd>
   </dl></dd>
 
