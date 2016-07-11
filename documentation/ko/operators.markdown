@@ -191,267 +191,265 @@ Observable이 배출하는 항목 전체를 대상으로 동작하는 연산자�
 <dl id="outer">
  <dt>나는 새로운 Observable을 생성하고 싶은데 그 Observable이</dt>
   <dd class="sub"><dl>
-   <dt>특정 항목 하나를 생성해야 한다면</dt>
+   <dt>특정 항목 하나를 생성해야 한다면:</dt>
     <dd><a href="operators/just.html">Just</a></dd>
     <dd class="sub"><dl>
-     <dt>구독 시점에서 함수 호출로 생성된 항목을 리턴해야 한다면</dt>
+     <dt>구독 시점에서 함수 호출로 생성된 항목을 리턴해야 한다면:</dt>
       <dd><a href="operators/start.html">Start</a></dd>
-     <dt>구독 시점에서 호출되는 <code>Action</code>, <code>Callable</code>, <code>Runnable</code> 또는 함수 등을 통해 항목을 생성해서 리턴해야 한다면</dt>
+     <dt>구독 시점에서 호출되는 <code>Action</code>, <code>Callable</code>, <code>Runnable</code> 또는 함수 등을 통해 항목을 생성해서 리턴해야 한다면:</dt>
       <dd><a href="operators/from.html">From</a></dd>
-     <dt>특정 시간동안 항목 배출을 지연시켜야 한다면</dt>
+     <dt>특정 시간동안 항목 배출을 지연시켜야 한다면:</dt>
       <dd><a href="operators/timer.html">Timer</a></dd>
      </dl></dd>
-   <dt>특정 <code>Array</code>, <code>Iterable</code> 또는 비슷한 형태의 소스로부터 항목들을 배출해야 한다면</dt>
+   <dt>특정 <code>Array</code>, <code>Iterable</code> 또는 비슷한 형태의 소스로부터 항목들을 배출해야 한다면:</dt>
     <dd><a href="operators/from.html">From</a></dd>
-   <dt>퓨처에서 항목을 조회해서 배출해야 한다면</dt>
+   <dt>퓨처에서 항목을 조회해서 배출해야 한다면:</dt>
     <dd><a href="operators/start.html">Start</a></dd>
-   <dt>퓨처로부터 연속된 항목을 가져와야 한다면</dt>
+   <dt>퓨처로부터 연속된 항목을 가져와야 한다면:</dt>
     <dd><a href="operators/from.html">From</a></dd>
-   <dt>반복적으로 연속된 항목을 배출해야 한다면</dt>
+   <dt>반복적으로 연속된 항목을 배출해야 한다면:</dt>
     <dd><a href="operators/repeat.html">Repeat</a></dd>
-   <dt>사용자가 정의한 로직을 통해 생성되어야 한라면</dt>
+   <dt>사용자가 정의한 로직을 통해 생성되어야 한라면:</dt>
     <dd><a href="operators/create.html">Create</a></dd>
-   <dt>각각의 옵저버가 Observable을 구독한 후에 생성되어야 한다면</dt>
+   <dt>각각의 옵저버가 Observable을 구독한 후에 생성되어야 한다면:</dt>
     <dd><a href="operators/defer.html">Defer</a></dd>
-   <dt>연속된 정수를 배출해야 한다면</dt>
+   <dt>연속된 정수를 배출해야 한다면:</dt>
     <dd><a href="operators/range.html">Range</a></dd>
     <dd class="sub"><dl>
-     <dt>특정 시간 간격별로 항목을 배출해야 한다면</dt>
+     <dt>특정 시간 간격별로 항목을 배출해야 한다면:</dt>
       <dd><a href="operators/interval.html">Interval</a></dd>
       <dd class="sub"><dl>
-       <dt>특정 시간 후에 항목을 배출해야 한다면</dt>
+       <dt>특정 시간 후에 항목을 배출해야 한다면:</dt>
        <dd><a href="operators/timer.html">Timer</a></dd>
       </dl></dd>
     </dl></dd>
-   <dt>항목 배출 없이 실행을 완료해야 한다면</dt>
+   <dt>항목 배출 없이 실행을 완료해야 한다면:</dt>
     <dd><a href="operators/empty-never-throw.html">Empty</a></dd>
-   <dt>아무것도 가지고 있지 말아야 한다면</dt>
+   <dt>아무것도 가지고 있지 말아야 한다면:</dt>
     <dd><a href="operators/empty-never-throw.html">Never</a></dd>
   </dl></dd>
 
- <dt>다른 Observable을 결합시켜 새로운 Observable을 생성하고 싶다</dt>
+ <dt>다른 Observable을 결합시켜 새로운 Observable을 생성해야 한다</dt>
   <dd class="sub"><dl>
-   <dt>그리고 순서에 상관없이 전달 된 모든 Observable이 가진 항목 전체를 배출하고 싶다</dt>
+   <dt>그리고 순서에 상관없이 전달 된 모든 Observable이 가진 항목 전체를 배출해야 한다면:</dt>
     <dd><a href="operators/merge.html">Merge</a></dd>
-   <dt>그리고 전달 된 Observable 순서대로 Observable이 가진 모든 항목들을 배출하고 싶다</dt>
+   <dt>그리고 전달 된 Observable 순서대로 Observable이 가진 모든 항목들을 배출해야 한다면:</dt>
     <dd><a href="operators/concat.html">Concat</a></dd>
-   <dt>생성하고 싶은 Observable은 두 개 이상의 Observable이 가진 항목들을 순서대로 결합시켜 새로운 항목을 배출하고 싶은데</dt>
+   <dt>생성하고 싶은 Observable은 두 개 이상의 Observable이 가진 항목들을 순서대로 결합시켜 새로운 항목을 배출해야 하는데:</dt>
     <dd class="sub"><dl>
-     <dt><em>각각</em>의 Observable이 항목을 배출 할 때마다 새로운 항목을 배출시켜야 한다면</dt>
+     <dt><em>각각</em>의 Observable이 항목을 배출 할 때마다 새로운 항목을 배출해야 한다면:</dt>
       <dd><a href="operators/zip.html">Zip</a></dd>
-     <dt>Observable 중 <em>하나</em>라도 항목을 배출시킬 경우에 새로운 항목을 배출해야 한다면</dt>
+     <dt>Observable 중 <em>하나</em>라도 항목을 배출시킬 경우에 새로운 항목을 배출해야 한다면:</dt>
       <dd><a href="operators/combinelatest.html">CombineLatest</a></dd>
-     <dt>하나의 Observable이 배출한 항목의 타임 윈도우가 열려있는 시간 동안 다른 Observable이 항목을 배출할 때마다 새로운 항목을 배출해야 한다면</dt>
+     <dt>하나의 Observable이 배출한 항목의 타임 윈도우가 열려있는 시간 동안 다른 Observable이 항목을 배출할 때마다 새로운 항목을 배출해야 한다면:</dt>
       <dd><a href="operators/join.html">Join</a></dd>
-     <dt><code>Pattern</code>과 <code>Plan</code> 중계자를 이용해서 항목을 배출해야 한다면</dt>
+     <dt><code>Pattern</code>과 <code>Plan</code> 중계자를 이용해서 항목을 배출해야 한다면:</dt>
       <dd><a href="operators/and-then-when.html">And/Then/When</a></dd>
     </dl></dd>
-   <dt>그리고 가장 최근에 항목을 배출한 Observable을 통해서만 항목을 배출하고 싶다면</dt>
+   <dt>그리고 가장 최근에 항목을 배출한 Observable을 통해서만 항목을 배출해야 한다면:</dt>
     <dd><a href="operators/switch.html">Switch</a></dd>
   </dl></dd>
 
- <dt>I want emit the items from an Observable after transforming them</dt>
+ <dt>항목들을 변환한 후에 Observable에서 항목들을 배출해야 하는데</dt>
   <dd class="sub"><dl>
-   <dt>one at a time with a function</dt>
+   <dt>함수와 함께 항목을 한번에 하나씩 변환 후 배출해야 한다면:</dt>
     <dd><a href="operators/map.html">Map</a></dd>
-   <dt>by emitting all of the items emitted by corresponding Observables</dt>
+   <dt>해당 Observable이 배출한 모든 항목을 그래로 변환 후 배출해야 한다면:</dt>
     <dd><a href="operators/flatmap.html">FlatMap</a></dd>
     <dd class="sub"><dl>
-     <dt>one Observable at a time, in the order they are emitted</dt>
+     <dt>한번에 Observable 하나씩 배출된 순서대로 변환 후 배출하고 싶다면:</dt>
       <dd><a href="operators/flatmap.html">ConcatMap</a></dd>
     </dl></dd>
-   <dt>based on all of the items that preceded them</dt>
+   <dt>앞에서 실행 된 결과를 기반으로 항목을 변환 후 배출해야 한다면:</dt>
     <dd><a href="operators/scan.html">Scan</a></dd>
-   <dt>by attaching a timestamp to them</dt>
+   <dt>타임 스탬프를 추가하여 변환 후 배출해야 한다면:</dt>
     <dd><a href="operators/timestamp.html">Timestamp</a></dd>
-   <dt>into an indicator of the amount of time that lapsed before the emission of the item</dt>
+   <dt>항목 배출 전까지 경과한 전체 시간을 가리키고 있는 객체로 변환 후 배출해야 한다면:</dt>
     <dd><a href="operators/timeinterval.html">TimeInterval</a></dd>
   </dl></dd>
 
- <dt>I want to shift the items emitted by an Observable forward in time before reemitting them</dt>
+ <dt>Observable이 항목을 배출하기 전에 항목의 배출 시간을 지연시켜야 한다:</dt>
   <dd><a href="operators/delay.html">Delay</a></dd>
 
- <dt>I want to transform items <em>and</em> notifications from an Observable into items and reemit them</dt>
+ <dt>Observable이 배출하는 항목들<em>과</em> 알림들을 다시 항목들로 변환 후 배출해야 하는데</dt>
   <dd class="sub"><dl>
-   <dt>by wrapping them in <code>Notification</code> objects</dt>
+   <dt>이때 배출하는 항목들을 <code>알림</code> 객체로 감싸서(wrapping) 배출해야 한다면:</dt>
     <dd><a href="operators/materialize-dematerialize.html">Materialize</a></dd>
     <dd class="sub"><dl>
-     <dt>which I can then unwrap again with</dt>
+     <dt>이 알림 객체가 다시 풀릴 수(unwrapping) 있다면:</dt>
       <dd><a href="operators/materialize-dematerialize.html">Dematerialize</a></dd>
     </dl></dd>
   </dl></dd>
 
- <dt>I want to ignore all items emitted by an Observable and only pass along its completed/error notification</dt>
+ <dt>Observable이 배출하는 모든 객체를 무시하고 completed/error 알림만 전달해야 한다면:</dt>
   <dd><a href="operators/ignoreelements.html">IgnoreElements</a></dd>
 
- <dt>I want to mirror an Observable but prefix items to its sequence</dt>
+ <dt>Observable이 가진 항목 그대로를 배출하지만 배출 전에 다른 항목들이 먼저 배출될 수 있도록 추가해야 한다면:</dt>
   <dd><a href="operators/startwith.html">StartWith</a></dd>
   <dd class="sub"><dl>
-   <dt>only if its sequence is empty</dt>
+   <dt>만약 소스 Observable이 비어있을 경우 기본 항목을 추가해야 한다면:</dt>
     <dd><a href="operators/defaultifempty.html">DefaultIfEmpty</a></dd>
   </dl></dd>
 
- <dt>I want to collect items from an Observable and reemit them as buffers of items</dt>
+ <dt>Observable이 배출하는 항목들을 모아둔 후 버퍼로 다시 배출해야 한다면:</dt>
   <dd><a href="operators/buffer.html">Buffer</a></dd>
   <dd class="sub"><dl>
-   <dt>containing only the last items emitted</dt>
+   <dt>그 중 마지막에 배출된 항목이 추가된 버퍼만 배출해야 한다면:</dt>
     <dd><a href="operators/takelast.html">TakeLastBuffer</a></dd>
   </dl></dd>
 
- <dt>I want to split one Observable into multiple Observables</dt>
+ <dt>하나의 Observable을 여러 Observable로 나눠야 한다:</dt>
   <dd><a href="operators/window.html">Window</a></dd>
   <dd class="sub"><dl>
-   <dt>so that similar items end up on the same Observable</dt>
+   <dt>그 중 유사한 항목들을 같은 Observable에 모아 두어야 한다면:</dt>
     <dd><a href="operators/groupby.html">GroupBy</a></dd>
   </dl></dd>
 
- <dt>I want to retrieve a particular item emitted by an Observable:</dt>
+ <dt>Observable이 배출한 특정 항목을 조회해야 하는데</dt>
   <dd class="sub"><dl>
-   <dt>the last item emitted before it completed</dt>
+   <dt>Observable이 완료되기 전에 마지막으로 배출한 항목을 조회해야 한다면:</dt>
     <dd><a href="operators/last.html">Last</a></dd>
-   <dt>the sole item it emitted</dt>
+   <dt>배출된 항목이 단지 하나이고 이것을 조회해야 한다면:</dt>
     <dd><a href="operators/first.html">Single</a></dd>
-   <dt>the first item it emitted</dt>
+   <dt>배출한 첫 번째 항목을 조회해야 한다면:</dt>
     <dd><a href="operators/first.html">First</a></dd>
   </dl></dd>
 
- <dt>I want to reemit only certain items from an Observable</dt>
+ <dt>Observable의 특정 항목만 재배출 해야 하는데</dt>
   <dd class="sub"><dl>
-   <dt>by filtering out those that do not match some predicate</dt>
+   <dt>어떤 조건을 만족시키지 않는 항목들을 필터링해서 재배출 해야 한다면:</dt>
     <dd><a href="operators/filter.html">Filter</a></dd>
-   <dt>that is, only the first item</dt>
+   <dt>첫 번째 항목만 재배출 해야 한다면:</dt>
     <dd><a href="operators/first.html">First</a></dd>
-   <dt>that is, only the first item<em>s</em></dt>
+   <dt>처음 몇 개의 항목<em>들</em>만 재배출 해야 한다면:</dt>
     <dd><a href="operators/take.html">Take</a></dd>
-   <dt>that is, only the last item</dt>
+   <dt>마지막 항목만 재배출 해야 한다면:</dt>
     <dd><a href="operators/last.html">Last</a></dd>
-   <dt>that is, only item <i>n</i></dt>
+   <dt><i>몇 번째</i> 위치한 항목만 재배출 해야 한다면:</dt>
     <dd><a href="operators/elementat.html">ElementAt</a></dd>
-   <dt>that is, only those items after the first items</dt>
+   <dt>재배출할 항목들이 처음 몇개 이후의 것들일 경우</dt>
     <dd class="sub"><dl>
-     <dt>that is, after the first <i>n</i> items</dt>
+     <dt>처음 <i>몇 개</i>의 항목들 이후의 것들 이라면:</dt>
       <dd><a href="operators/skip.html">Skip</a></dd>
-     <dt>that is, until one of those items matches a predicate</dt>
+     <dt>특정 조건을 만족시킨 이후의 것들 이라면:</dt>
       <dd><a href="operators/skipwhile.html">SkipWhile</a></dd>
-     <dt>that is, after an initial period of time</dt>
+     <dt>초기 특정 시간 이후에 배출된 항목들 이라면:</dt>
       <dd><a href="operators/skip.html">Skip</a></dd>
-     <dt>that is, after a second Observable emits an item</dt>
+     <dt>두 번째 Observable이 항목을 배출한 이후의 것들 이라면:</dt>
       <dd><a href="operators/skipuntil.html">SkipUntil</a></dd>
     </dl></dd>
-   <dt>that is, those items except the last items</dt>
+   <dt>마지막 항목 몇개를 제외한 경우</dt>
     <dd class="sub"><dl>
-     <dt>that is, except the last <i>n</i> items</dt>
+     <dt>마지막 <i>몇 개</i> 항목을 제외한 것들 이라면:</dt>
       <dd><a href="operators/skiplast.html">SkipLast</a></dd>
-     <dt>that is, until one of those items matches a predicate</dt>
+     <dt>특정 조건을 만족할때 까지의 것들 이라면:</dt>
       <dd><a href="operators/takewhile.html">TakeWhile</a></dd>
-     <dt>that is, except items emitted during a period of time before the source completes</dt>
+     <dt>소스 Observable이 완료되기 이전 특정 시간 동안 배출한 것들을 제외한 것이라면:</dt>
       <dd><a href="operators/skiplast.html">SkipLast</a></dd>
-     <dt>that is, except items emitted after a second Observable emits an item</dt>
+     <dt>두 번째 Observable이 항목을 배출한 이후에 배출된 것들을 제외한 것이라면:</dt>
       <dd><a href="operators/takeuntil.html">TakeUntil</a></dd>
     </dl></dd>
-   <dt>by sampling the Observable periodically</dt>
+   <dt>주기적으로 Observable을 샘플링해서 재배출해야 한다면:</dt>
     <dd><a href="operators/sample.html">Sample</a></dd>
-   <dt>by only emitting items that are not followed by other items within some duration</dt>
+   <dt>특정 시간이 지나고 나서 배출된 항목들만 재배출 해야 한다면:</dt>
     <dd><a href="operators/debounce.html">Debounce</a></dd>
-   <dt>by suppressing items that are duplicates of already-emitted items</dt>
+   <dt>이미 배출된 항목과 동일한 것들을 제외시켜 재배출 해야 한다면:</dt>
     <dd><a href="operators/distinct.html">Distinct</a></dd>
     <dd class="sub"><dl>
-     <dt>if they immediately follow the item they are duplicates of</dt>
+     <dt>만약 중복된 항목이 바로 연이어 배출된다면:</dt>
       <dd><a href="operators/distinct.html">DistinctUntilChanged</a></dd>
     </dl></dd>
-   <dt>by delaying my subscription to it for some time after it begins emitting items</dt>
+   <dt>항목 배출이 시작된 이후에 얼마 동안 구독을 지연시켜야 한다면:</dt>
     <dd><a href="operators/delay.html">DelaySubscription</a></dd>
   </dl></dd>
 
- <dt>I want to reemit items from an Observable only on condition that it was the first of a collection of Observables to emit an item</dt>
+ <dt>항목들을 배출하는 Observable 컬랙션 중에 첫 번째로 항목을 배출하는 Observable의 항목만 배출해야 한다면:</dt>
   <dd><a href="operators/amb.html">Amb</a></dd>
 
- <dt>I want to evaluate the entire sequence of items emitted by an Observable</dt>
+ <dt>Observable이 배출한 연속된 항목 전체를 평가해야 한다</dt>
   <dd class="sub"><dl>
-   <dt>and emit a single boolean indicating if <em>all</em> of the items pass some test</dt>
+   <dt>그리고 항목 <em>전체</em>가 테스트를 통과했는지를 가리키는 boolean 타입 항목 하나를 배출해야 한다면:</dt>
     <dd><a href="operators/all.html">All</a></dd>
-   <dt>and emit a single boolean indicating if the Observable emitted <em>any</em> item (that passes some test)</dt>
+   <dt>그리고 항목 전체 중 <em>하나라도</em> 테스트를 통과했는지를 가리키는 boolean 타입 항목 하나를 배출해야 한다면:</dt>
     <dd><a href="operators/contains.html">Contains</a></dd>
-   <dt>and emit a single boolean indicating if the Observable emitted <em>no</em> items</dt>
+   <dt>그리고 Observable이 항목을 배출하지 못했는지를 가리키는 boolean 타입 항목 하나를 배출해야 한다면:</dt>
     <dd><a href="operators/contains.html">IsEmpty</a></dd>
-   <dt>and emit a single boolean indicating if the sequence is identical to one emitted by a second Observable</dt>
+   <dt>그리고 두 Observable이 같은 순서대로 항목들을 배출했는지를 가리키는 boolean 타입 하나를 배출해야 한다면:</dt>
     <dd><a href="operators/sequenceequal.html">SequenceEqual</a></dd>
-   <dt>and emit the average of all of their values</dt>
+   <dt>그리고 전체 배출된 항목의 평균 값을 항목을 배출해야 한다면:</dt>
     <dd><a href="operators/average.html">Average</a></dd>
-   <dt>and emit the sum of all of their values</dt>
+   <dt>그리고 전체 배출된 항목의 합계를 배출해야 한다면:</dt>
     <dd><a href="operators/sum.html">Sum</a></dd>
-   <dt>and emit a number indicating how many items were in the sequence</dt>
+   <dt>그리고 얼마나 많은 항목들이 배출됐는지를 배출해야 한다면:</dt>
     <dd><a href="operators/count.html">Count</a></dd>
-   <dt>and emit the item with the maximum value</dt>
+   <dt>그리고 가장 큰 값을 가진 항목을 배출해야 한다면:</dt>
     <dd><a href="operators/max.html">Max</a></dd>
-   <dt>and emit the item with the minimum value</dt>
+   <dt>그리고 가장 작은 값을 가진 항목을 배출해야 한다면:</dt>
     <dd><a href="operators/min.html">Min</a></dd>
-   <dt>by applying an aggregation function to each item in turn and emitting the result</dt>
+   <dt>배출되는 항목 순서대로 각각에 집계 함수를 적용해서 결과를 배출해야 한다면:</dt>
     <dd><a href="operators/scan.html">Scan</a></dd>
   </dl></dd>
 
- <dt>I want to convert the entire sequence of items emitted by an Observable into some other data structure</dt>
+ <dt>Observable이 배출한 전체 항목들을 특정 자료구조로 배출하고 싶다면</dt>
   <dd><a href="operators/to.html">To</a></dd>
 
- <dt>I want an operator to operate on a particular <a href="../scheduler.html">Scheduler</a></dt>
+ <dt>연산자가 특정 <a href="../scheduler.html">스케줄러</a> 상에서 동작해야 한다면:</dt>
   <dd><a href="operators/subscribeon.html">SubscribeOn</a></dd>
   <dd class="sub"><dl>
-   <dt>when it notifies observers</dt>
+   <dt>연산자가 옵저버한테 알림을 줄 때 동작할 스케줄러를 지정해야 한다면:</dt>
     <dd><a href="operators/observeon.html">ObserveOn</a></dd>
   </dl></dd>
 
- <dt>I want an Observable to invoke a particular action when certain events occur</dt>
+ <dt>특정 이벤트가 발생 할 때 Observable 상에서 어떤 동작을 실행시켜야 한다면:</dt>
   <dd><a href="operators/do.html">Do</a></dd>
 
- <dt>I want an Observable that will notify observers of an error</dt>
+ <dt>오류가 발생했을 때 Observable이 옵저버에게 오류를 알려야 하다면:</dt>
   <dd><a href="operators/empty-never-throw.html">Throw</a></dd>
   <dd class="sub"><dl>
-   <dt>if a specified period of time elapses without it emitting an item</dt>
+   <dt>만약 항목이 배출되지 않은 상태에서 특정 시간이 경과했다면</dt>
     <dd><a href="operators/timeout.html">Timeout</a></dd>
   </dl></dd>
 
- <dt>I want an Observable to recover gracefully</dt>
+ <dt>자연스럽게 Observable을 복구해야 하는데</dt>
   <dd class="sub"><dl>
-   <dt>from a timeout by switching to a backup Observable</dt>
+   <dt>타임 아웃이 발생한 경우 백업 Observable로 전환시켜 복구해야 한다면:</dt>
     <dd><a href="operators/timeout.html">Timeout</a></dd>
-   <dt>from an upstream error notification</dt>
+   <dt>앞에서 발생한 오류 알림으로부터 복구해야 한다면:</dt>
     <dd><a href="operators/catch.html">Catch</a></dd>
     <dd class="sub"><dl>
-     <dt>by attempting to resubscribe to the upstream Observable</dt>
+     <dt>이전 Observable에 재구독을 시도해야 한다면:</dt>
       <dd><a href="operators/retry.html">Retry</a></dd>
     </dl></dd>
   </dl></dd>
 
- <dt>I want to create a resource that has the same lifespan as the Observable</dt>
+ <dt>동일한 생명주기를 가진 리소스를 Observable로 생성해야 한다면:</dt>
   <dd><a href="operators/using.html">Using</a></dd>
 
- <dt>I want to subscribe to an Observable and receive a <code>Future</code> that blocks until the Observable completes</dt>
+ <dt>Observable을 구독하고 Observable이 완료될 때까지 블로킹 상태에 있는 <code>퓨처(Future)</code>를 전달 받고 싶다면:</dt>
   <dd><a href="operators/start.html">Start</a></dd>
 
- <dt>I want an Observable that does not start emitting items to subscribers until asked</dt>
+ <dt>구독자의 요청 전까지 Observable이 항목을 구독자에게 배포하지 말아야 한다면:</dt>
   <dd><a href="operators/publish.html">Publish</a></dd>
   <dd class="sub"><dl>
-   <dt>and then only emits the last item in its sequence</dt>
+   <dt>그리고 맨 마지막 항목만을 배출해야 한다면:</dt>
     <dd><a href="operators/publish.html">PublishLast</a></dd>
-   <dt>and then emits the complete sequence, even to those who subscribe after the sequence has begun</dt>
+   <dt>그리고 배출 이후에 구독자가 구독을 시작했다 하더라고 동일하게 배출 순서를 전달해야 한다면:</dt>
     <dd><a href="operators/replay.html">Replay</a></dd>
-   <dt>but I want it to go away once all of its subscribers unsubscribe</dt>
+   <dt>하지만 모든 구독자가 한번에 구독을 해지할 수 있어야 한다면:</dt>
     <dd><a href="operators/refcount.html">RefCount</a></dd>
-   <dt>and then I want to ask it to start</dt>
+   <dt>그리고 배출을 시작하도록 Observable에게 요청해야 한다면:</dt>
     <dd><a href="operators/connect.html">Connect</a></dd>
   </dl></dd>
 </dl>
 </div>
-<h4 style="clear:both;">See Also</h4>
+<h4 style="clear:both;">참고</h4>
 <ul>
  <li><a href="http://xgrommx.github.io/rx-book/content/which_operator_do_i_use/index.html">Which Operator do I use?</a> by Dennis Stoyanov (a similar decision tree, specific to RxJS operators)</li>
 </ul>
 
 <h1 id="alphabetical" style="clear: left;">Observable 연산자 리스트(알파벳순)</h1>
 
-Canonical, core operator names are in **boldface**. Other entries represent language-specific
-variants of these operators or specialty operators outside of the main ReactiveX core set of
-operators.
+표준 연산자나 핵심 연산자의 이름은 **boldface**로 표시했다. 그 외 연산자들은 언어 별로 구현된 다양한 연산자들을 포함하거나 ReactiveX의 주요 연산자 이외의 특별한 연산자들을 포함한다.
 
 * [`Aggregate`]({{ site.url }}/documentation/operators/reduce.html)
 * [**`All`**]({{ site.url }}/documentation/operators/all.html)
