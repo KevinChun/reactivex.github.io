@@ -186,7 +186,7 @@ Observable이 배출하는 항목 전체를 대상으로 동작하는 연산자�
 </style>
   <h1>Observable 연산자 결정 트리</h1>
   <p>
-   이 트리는 여러분이 필요로 하는 ReactiveX의 Observable 연산자를 찾는데 도움을 줄 것이다.
+   이 트리는 여러분이 원하는 ReactiveX의 Observable 연산자를 찾는데 도움을 줄 것이다.
   </p>
 <dl id="outer">
  <dt>나는 새로운 Observable을 생성하고 싶은데 그 Observable이</dt>
@@ -194,22 +194,22 @@ Observable이 배출하는 항목 전체를 대상으로 동작하는 연산자�
    <dt>특정 항목 하나를 생성해야 한다면:</dt>
     <dd><a href="operators/just.html">Just</a></dd>
     <dd class="sub"><dl>
-     <dt>구독 시점에서 함수 호출로 생성된 항목을 리턴해야 한다면:</dt>
+     <dt>구독 시점에 호출된 함수를 통해 생성된 항목을 리턴해야 한다면:</dt>
       <dd><a href="operators/start.html">Start</a></dd>
-     <dt>구독 시점에서 호출되는 <code>Action</code>, <code>Callable</code>, <code>Runnable</code> 또는 함수 등을 통해 항목을 생성해서 리턴해야 한다면:</dt>
+     <dt>구독 시점에 호출된 <code>Action</code>, <code>Callable</code>, <code>Runnable</code> 또는 그와 유사한 함수 등을 통해 생성된 항목을 리턴해야 한다면:</dt>
       <dd><a href="operators/from.html">From</a></dd>
-     <dt>특정 시간동안 항목 배출을 지연시켜야 한다면:</dt>
+     <dt>지정된 시간 이후에 항목을 배출해야 한다면:</dt>
       <dd><a href="operators/timer.html">Timer</a></dd>
      </dl></dd>
-   <dt>특정 <code>Array</code>, <code>Iterable</code> 또는 비슷한 형태의 소스로부터 항목들을 배출해야 한다면:</dt>
+   <dt>특정 <code>Array</code>, <code>Iterable</code> 또는 유사한 형태의 소스로부터 항목들을 배출해야 한다면:</dt>
     <dd><a href="operators/from.html">From</a></dd>
    <dt>퓨처에서 항목을 조회해서 배출해야 한다면:</dt>
     <dd><a href="operators/start.html">Start</a></dd>
-   <dt>퓨처로부터 연속된 항목을 가져와야 한다면:</dt>
+   <dt>퓨처에서 연속된 항목을 가져와야 한다면:</dt>
     <dd><a href="operators/from.html">From</a></dd>
    <dt>반복적으로 연속된 항목을 배출해야 한다면:</dt>
     <dd><a href="operators/repeat.html">Repeat</a></dd>
-   <dt>사용자가 정의한 로직을 통해 생성되어야 한라면:</dt>
+   <dt>사용자가 정의한 로직을 통해 생성되어야 한다면:</dt>
     <dd><a href="operators/create.html">Create</a></dd>
    <dt>각각의 옵저버가 Observable을 구독한 후에 생성되어야 한다면:</dt>
     <dd><a href="operators/defer.html">Defer</a></dd>
@@ -225,21 +225,21 @@ Observable이 배출하는 항목 전체를 대상으로 동작하는 연산자�
     </dl></dd>
    <dt>항목 배출 없이 실행을 완료해야 한다면:</dt>
     <dd><a href="operators/empty-never-throw.html">Empty</a></dd>
-   <dt>아무것도 가지고 있지 말아야 한다면:</dt>
+   <dt>아무일도 하지 않아야 한다면:</dt>
     <dd><a href="operators/empty-never-throw.html">Never</a></dd>
   </dl></dd>
 
  <dt>다른 Observable을 결합시켜 새로운 Observable을 생성해야 한다</dt>
   <dd class="sub"><dl>
-   <dt>그리고 순서에 상관없이 전달 된 모든 Observable이 가진 항목 전체를 배출해야 한다면:</dt>
+   <dt>그리고 순서와 상관없이 전달 된 모든 Observable이 가진 항목 전체를 배출해야 한다면:</dt>
     <dd><a href="operators/merge.html">Merge</a></dd>
-   <dt>그리고 전달 된 Observable 순서대로 Observable이 가진 모든 항목들을 배출해야 한다면:</dt>
+   <dt>그리고 전달 된 Observable의 순서대로 Observable이 가진 모든 항목들을 배출해야 한다면:</dt>
     <dd><a href="operators/concat.html">Concat</a></dd>
-   <dt>생성하고 싶은 Observable은 두 개 이상의 Observable이 가진 항목들을 순서대로 결합시켜 새로운 항목을 배출해야 하는데:</dt>
+   <dt>생성하고 싶은 Observable은, 두 개 이상의 Observable이 가진 항목들을 순서대로 결합시켜 새로운 항목을 배출해야 하는데:</dt>
     <dd class="sub"><dl>
-     <dt><em>각각</em>의 Observable이 항목을 배출 할 때마다 새로운 항목을 배출해야 한다면:</dt>
+     <dt><em>각각</em>의 Observable이 항목을 배출 할 때마다 그 항목들을 결합시켜 배출해야 한다면:</dt>
       <dd><a href="operators/zip.html">Zip</a></dd>
-     <dt>Observable 중 <em>하나</em>라도 항목을 배출시킬 경우에 새로운 항목을 배출해야 한다면:</dt>
+     <dt>Observable 중 <em>하나</em>라도 항목을 배출할 경우에 마지막으로 배출된 항목들을 결합시켜 배출해야 한다면:</dt>
       <dd><a href="operators/combinelatest.html">CombineLatest</a></dd>
      <dt>하나의 Observable이 배출한 항목의 타임 윈도우가 열려있는 시간 동안 다른 Observable이 항목을 배출할 때마다 새로운 항목을 배출해야 한다면:</dt>
       <dd><a href="operators/join.html">Join</a></dd>
@@ -250,21 +250,21 @@ Observable이 배출하는 항목 전체를 대상으로 동작하는 연산자�
     <dd><a href="operators/switch.html">Switch</a></dd>
   </dl></dd>
 
- <dt>항목들을 변환한 후에 Observable에서 항목들을 배출해야 하는데</dt>
+ <dt>Observable이 배출한 항목들을 변환한 후에 다시 배출해야 하는데</dt>
   <dd class="sub"><dl>
    <dt>함수와 함께 항목을 한번에 하나씩 변환 후 배출해야 한다면:</dt>
     <dd><a href="operators/map.html">Map</a></dd>
-   <dt>해당 Observable이 배출한 모든 항목을 그래로 변환 후 배출해야 한다면:</dt>
+   <dt>해당 Observable이 배출한 모든 항목들을 하나의 Observable이 배출하는 형태로 배출해야 한다면:</dt>
     <dd><a href="operators/flatmap.html">FlatMap</a></dd>
     <dd class="sub"><dl>
-     <dt>한번에 Observable 하나씩 배출된 순서대로 변환 후 배출하고 싶다면:</dt>
+     <dt>순서대로 Observable이 배출한 항목들을 연결지어 배출해야 한다면:</dt>
       <dd><a href="operators/flatmap.html">ConcatMap</a></dd>
     </dl></dd>
-   <dt>앞에서 실행 된 결과를 기반으로 항목을 변환 후 배출해야 한다면:</dt>
+   <dt>앞에서 실행 된 결과를 기반으로 항목을 변환한 후 배출해야 한다면:</dt>
     <dd><a href="operators/scan.html">Scan</a></dd>
-   <dt>타임 스탬프를 추가하여 변환 후 배출해야 한다면:</dt>
+   <dt>타임 스탬프를 추가하여 변환한 후 배출해야 한다면:</dt>
     <dd><a href="operators/timestamp.html">Timestamp</a></dd>
-   <dt>항목 배출 전까지 경과한 전체 시간을 가리키고 있는 객체로 변환 후 배출해야 한다면:</dt>
+   <dt>항목 배출 전까지 경과한 시간을 가리키는 객체로 변환한 후에 배출해야 한다면:</dt>
     <dd><a href="operators/timeinterval.html">TimeInterval</a></dd>
   </dl></dd>
 
